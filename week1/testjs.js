@@ -4,9 +4,7 @@ function go(){
     'callback': signinCallback
   };
 
-  var additionalParams = {
-    'callback': signinCallback
-  };
+
 
   var signinButton = document.getElementById('signinButton');
   signinButton.addEventListener('click', function(){
@@ -17,7 +15,7 @@ function go(){
 
 function signinCallback(authResult){
   if(authResult['status']['signed_in']){
-    document.getElementById('signinButton').setAttributes('style', 'display: none');
+    document.getElementById('signinButton').setAttribute('style', 'display: none');
     gapi.auth.setToken(authResult);
     gapi.client.load('plus', 'v1').then(function(){
       var request = gapi.client.plus.people.get({
